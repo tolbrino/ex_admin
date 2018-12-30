@@ -108,7 +108,7 @@ defmodule ExAdmin.Theme.AdminLte2.Layout do
 
         div body_attributes do
           case apply(mod, fun, [conn, resource]) do
-            {_, rest} -> text(rest)
+            {:safe, _} = safe -> safe
             :ok -> ""
             other -> text(other)
           end
